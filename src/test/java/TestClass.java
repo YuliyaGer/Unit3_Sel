@@ -6,7 +6,6 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.*;
 
  class TestClass {
-
      @Test
      void TestCardForm() throws InterruptedException {
          open("http://localhost:9999");
@@ -16,7 +15,7 @@ import static com.codeborne.selenide.Selenide.*;
          form.$("[data-test-id=agreement]").click();
          form.$("[class=\"button button_view_extra button_size_m " +
                  "button_theme_alfa-on-white\"]").click();
-         $ ("[class=\"button button_view_extra button_size_m button_theme_alfa-on-white\"]").shouldHave(exactText("Ваша заявка успешно отправлена! " +
+         $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена!" +
                  "Наш менеджер свяжется с вами в ближайшее время."));
          Thread.sleep(5000);
      }
@@ -34,5 +33,5 @@ import static com.codeborne.selenide.Selenide.*;
          $(".input_invalid").shouldHave(exactText("Имя и Фамилия указаные" +
                  " неверно. Допустимы только русские буквы, пробелы и дефисы."));
          Thread.sleep(5000);
-     }
+    }
  }
